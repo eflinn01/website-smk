@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak | SMKN 1 Mandau</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #f4f7fa;
+        color: #333;
+      }
+
+      header {
+        background-color: #00264d;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2em;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+
+      .contact-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .contact-info,
+      .contact-form {
+        flex: 1 1 45%;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-info h2,
+      .contact-form h2 {
+        color: #00264d;
+        margin-bottom: 15px;
+      }
+
+      .contact-info p {
+        line-height: 1.6;
+      }
+
+      .contact-info iframe {
+        width: 100%;
+        height: 250px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 5px;
+        margin-top: 15px;
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      form textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      form button {
+        margin-top: 15px;
+        background-color: #00509e;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s;
+      }
+
+      form button:hover {
+        background-color: #003f7d;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #00264d;
+        color: white;
+        margin-top: 40px;
+      }
+
+      @media (max-width: 768px) {
+        .contact-section {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Kontak SMKN 1 Mandau</h1>
+    </header>
+
+    <div class="container">
+      <div class="contact-section">
+        <!-- Info Kontak -->
+        <div class="contact-info">
+          <h2>Informasi Kontak</h2>
+          <p><strong>Alamat:</strong> Jl. Stadion Duri No.88, Mandau, Riau</p>
+          <p><strong>Email:</strong> info@smkn1mandau.sch.id</p>
+          <p><strong>Telepon:</strong> (0765) 123456</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!..."
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+
+        <!-- Formulir Kontak -->
+        <div class="contact-form">
+          <h2>Kirim Pesan</h2>
+          <form
+            action="mailto:info@smkn1mandau.sch.id"
+            method="post"
+            enctype="text/plain"
+          >
+            <label for="name">Nama Lengkap</label>
+            <input type="text" id="name" name="Nama" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required />
+
+            <label for="message">Pesan</label>
+            <textarea id="message" name="Pesan" required></textarea>
+
+            <button type="submit">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>&copy; 2025 SMKN 1 Mandau. All rights reserved.</footer>
+  </body>
+</html>
