@@ -20,8 +20,8 @@
         flex-direction: column;
         z-index: 9999;
         font-family: "Segoe UI", sans-serif;
-        animation: fadeOut 1s ease forwards;
-        animation-delay: 2.5s;
+        opacity: 1;
+        transition: opacity 1s ease;
       }
 
       #splash h1 {
@@ -29,11 +29,14 @@
         animation: fadeInUp 1s ease;
       }
 
-      @keyframes fadeOut {
-        to {
-          opacity: 0;
-          visibility: hidden;
-        }
+      .loader {
+        margin-top: 20px;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #ffd700;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
       }
 
       @keyframes fadeInUp {
@@ -44,6 +47,15 @@
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
         }
       }
 
@@ -139,6 +151,7 @@
     <div id="splash">
       <h1>SMKN 1 Mandau</h1>
       <p>Membuka Halaman...</p>
+      <div class="loader"></div>
     </div>
 
     <!-- Header -->
@@ -196,5 +209,18 @@
     <footer>
       <p>&copy; 2025 SMKN 1 Mandau. SMK UNGGUL.</p>
     </footer>
+
+    <!-- Splash Script -->
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const splash = document.getElementById("splash");
+          splash.style.opacity = "0";
+          setTimeout(() => {
+            splash.style.display = "none";
+          }, 1000); // waktu untuk transisi opacity
+        }, 60000); // 60 detik
+      });
+    </script>
   </body>
 </html>
