@@ -1,227 +1,281 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SMKN 1 Mandau</title>
-    <style>
-      /* === Splash Screen === */
-      #splash {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: #1a1a1a;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        z-index: 9999;
-        font-family: "Segoe UI", sans-serif;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMKN 1 Mandau</title>
+
+  <style>
+    /* Splash Screen */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      font-family: "Segoe UI", sans-serif;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    #splash h1 {
+      font-size: 2.5em;
+      animation: fadeInUp 1s ease;
+    }
+
+    .loader {
+      margin-top: 20px;
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #ffd700;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
         opacity: 1;
-        transition: opacity 1s ease;
+        transform: translateY(0);
       }
+    }
 
-      #splash h1 {
-        font-size: 2.5em;
-        animation: fadeInUp 1s ease;
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
-
-      .loader {
-        margin-top: 20px;
-        border: 6px solid #f3f3f3;
-        border-top: 6px solid #ffd700;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 2s linear infinite;
+      100% {
+        transform: rotate(360deg);
       }
+    }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    /* Umum */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* === Modern Theme === */
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f7f9;
-        margin: 0;
-        padding: 0;
-        color: #333;
-      }
+    header img.Logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
 
-      header {
-        background-color: #004080;
-        color: white;
-        padding: 30px 20px;
-        text-align: center;
+    nav {
+      background-color: #0059b3;
+      text-align: center;
+      padding: 12px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    main {
+      padding: 30px;
+      background-color: white;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    main h2 {
+      color: #004080;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      background-color: #00264d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
       }
 
       header img.Logo {
-        width: 100px;
-        height: auto;
-        margin-bottom: 10px;
-      }
-
-      nav {
-        background-color: #0059b3;
-        text-align: center;
-        padding: 12px;
-      }
-
-      nav a {
-        color: white;
-        text-decoration: none;
-        margin: 15px;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      nav a:hover {
-        color: #ffd700;
+        width: 80px;
       }
 
       main {
-        padding: 30px;
-        background-color: white;
-        max-width: 1000px;
-        margin: auto;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        border-radius: 8px;
-        margin-top: 30px;
+        padding: 20px;
       }
+    }
 
-      main h2 {
-        color: #004080;
+    /* === Kupu-Kupu Terbang === */
+    .butterflies {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://i.ibb.co/vmZVrBd/butterfly.gif');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: fly-up linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fly-up {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
       }
-
-      section {
-        margin-bottom: 40px;
+      50% {
+        opacity: 1;
       }
-
-      ul {
-        padding-left: 20px;
+      100% {
+        transform: translateY(-20vh) translateX(50px);
+        opacity: 0;
       }
+    }
+  </style>
+</head>
 
-      footer {
-        background-color: #00264d;
-        color: white;
-        text-align: center;
-        padding: 15px;
-        margin-top: 40px;
-      }
+<body>
 
-      /* Responsive */
-      @media screen and (max-width: 600px) {
-        nav a {
-          display: block;
-          margin: 10px 0;
-        }
+  <!-- Splash Screen -->
+  <div id="splash">
+    <h1>SMKN 1 Mandau</h1>
+    <p>Membuka Halaman...</p>
+    <div class="loader"></div>
+  </div>
 
-        header img.Logo {
-          width: 80px;
-        }
+  <!-- Header -->
+  <header>
+    <img src="image/smk.png" alt="Logo Sekolah" class="Logo" />
+    <h1>Selamat Datang di SMKN 1 Mandau</h1>
+    <p>Sekolah Menengah Kejuruan Negeri Unggulan di Mandau</p>
 
-        main {
-          padding: 20px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Splash Screen -->
-    <div id="splash">
-      <h1>SMKN 1 Mandau</h1>
-      <p>Membuka Halaman...</p>
-      <div class="loader"></div>
-    </div>
+    <!-- Kupu-Kupu Terbang -->
+    <div class="butterflies"></div>
+  </header>
 
-    <!-- Header -->
-    <header>
-      <img src="image/smk.png" alt="Logo Sekolah" class="Logo" />
-      <h1>Selamat Datang di SMKN 1 Mandau</h1>
-      <p>Sekolah Menengah Kejuruan Negeri Unggulan di Mandau</p>
-    </header>
+  <!-- Navigation -->
+  <nav>
+    <a href="profil.html">Profil</a>
+    <a href="jurusan.html">Jurusan</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
 
-    <!-- Navigation -->
-    <nav>
-      <a href="profil.html">Profil</a>
-      <a href="jurusan.html">Jurusan</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
+  <!-- Main Content -->
+  <main>
+    <section id="profil">
+      <h2>Profil Sekolah</h2>
+      <p>
+        SMKN 1 Mandau adalah sekolah kejuruan yang memiliki berbagai jurusan unggulan dan fasilitas lengkap untuk mendukung pembelajaran siswa.
+      </p>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-      <section id="profil">
-        <h2>Profil Sekolah</h2>
-        <p>
-          SMKN 1 Mandau adalah sekolah kejuruan yang memiliki berbagai jurusan
-          unggulan dan fasilitas lengkap untuk mendukung pembelajaran siswa.
-        </p>
-      </section>
+    <section id="jurusan">
+      <h2>Jurusan</h2>
+      <ul>
+        <li>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</li>
+        <li>Analisis Pratikum Laboratorium (APL)</li>
+        <li>Teknik Kendaraan Ringan (TKR)</li>
+        <li>Teknik Sepeda Motor (TSM)</li>
+        <li>Teknik Instalasi Tenaga Listrik (TITL)</li>
+        <li>Teknik Pengelasan (TP)</li>
+        <li>Teknik Audio Video (TAV)</li>
+        <li>Geologi Pertambangan (GP)</li>
+        <li>Desain Permodelan dan Informasi Bangunan (DPIB)</li>
+        <li>Teknik Pengeboran Minyak dan Gas (TPMG)</li>
+      </ul>
+    </section>
 
-      <section id="jurusan">
-        <h2>Jurusan</h2>
-        <ul>
-          <li>Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</li>
-          <li>Analisis Pratikum Laboratorium (APL)</li>
-          <li>Teknik Kendaraan Ringan (TKR)</li>
-          <li>Teknik Sepeda Motor (TSM)</li>
-          <li>Teknik Instalasi Tenaga Listrik (TITL)</li>
-          <li>Teknik Pengelasan (TP)</li>
-          <li>Teknik Audio Video (TAV)</li>
-          <li>Geologi Pertambangan (GP)</li>
-          <li>Desain Permodelan dan Informasi Bangunan (DPIB)</li>
-          <li>Teknik Pengeboran Minyak dan Gas (TPMG )</li>
-        </ul>
-      </section>
+    <section id="kontak">
+      <h2>Kontak</h2>
+      <p>Email: smkn1mandau@gmail.com</p>
+      <p>Telepon: (0765) 597019</p>
+      <p>Alamat: Jl. Pipa Air Bersih, Desa Simpang Padang, Kec. Mandau, Kab. Bengkalis, Riau</p>
+    </section>
+  </main>
 
-      <section id="kontak">
-        <h2>Kontak</h2>
-        <p>Email: smkn1mandau@gmail.com</p>
-        <p>Telepon: (0765) 597019</p>
-        <p>
-          Alamat: Jl. Pipa Air Bersih, Desa Simpang Padang, Kec. Mandau, Kab.
-          Bengkalis, Riau
-        </p>
-      </section>
-    </main>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 SMKN 1 Mandau. SMK UNGGUL.</p>
+  </footer>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 SMKN 1 Mandau. SMK UNGGUL.</p>
-    </footer>
+  <!-- Script: Kupu-Kupu Terbang -->
+  <script>
+    const container = document.querySelector('.butterflies');
 
-    <!-- Splash Script -->
-    <script>
-      window.addEventListener("load", () => {
+    for (let i = 0; i < 20; i++) {
+      const butterfly = document.createElement('div');
+      butterfly.classList.add('butterfly');
+      butterfly.style.left = Math.random() * 100 + 'vw';
+      butterfly.style.animationDuration = (10 + Math.random() * 15) + 's';
+      butterfly.style.animationDelay = Math.random() * 10 + 's';
+      container.appendChild(butterfly);
+    }
+  </script>
+
+  <!-- Script: Splash Screen -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        splash.style.opacity = "0";
         setTimeout(() => {
-          const splash = document.getElementById("splash");
-          splash.style.opacity = "0";
-          setTimeout(() => {
-            splash.style.display = "none";
-          }, 1000); // waktu untuk transisi opacity
-        }, 60000); // 60 detik
-      });
-    </script>
-  </body>
+          splash.style.display = "none";
+        }, 1000);
+      }, 30000); // Splash screen tampil selama 30 detik
+    });
+  </script>
+</body>
 </html>
-
